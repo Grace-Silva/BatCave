@@ -1,0 +1,88 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root{
+    /*colour palette:*/
+    --backgroundColor: #0F0F0F;
+    --boxColor: #393E46;
+    --textColor: #fafafa;
+    --emphasisColor: #00CAFF;
+    --neonViolet: #9400FF;
+    --neonYellow: #FDFF00;
+    --transition: all ease .2s;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    background-color: var(--backgroundColor);
+    min-height: 100vh;
+    width: 100vw;
+    color: var(--textColor);
+    font-family: "JetBrains Mono", monospace;
+}
+
+.navBar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    padding: 2em;
+    background-color: rgba(15, 15, 15, 0.8);
+}
+
+.batLogo{
+    width: 160px;
+    cursor: pointer;
+    filter: brightness(.7);
+    transition: var(--transition);
+}
+.batLogo:hover{
+    filter: brightness(1.1);
+}
+
+.navlinks{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+ .navlinks .linkItem > a{
+    text-decoration: none;
+    color: var(--emphasisColor);
+    opacity: .7;
+ } .navlinks .linkItem > a:hover{
+    opacity: 1;
+    text-shadow: 0px 0px 4px var(--emphasisColor);
+ }
+
+ /* hero section */
+ .hero{
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background: linear-gradient(90deg,rgba(15, 15, 15, 0.69) 100%, rgba(57, 62, 70, 1) 0%), url(../img/bat-signal-batman-89.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+ }
+
+ .hero .heroTitle{
+    width: 100%;
+    padding: 0 1em;
+    font-size: 3em;
+    text-align: center;
+    color: var(--textColor);
+    text-shadow: 0px 0px 4px #00CAFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
