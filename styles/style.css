@@ -9,7 +9,7 @@
   --textColor: #fafafa;
   --emphasisColor: #00ccff;
   --terminal-blue: #0d1117;
-  --transition: all ease 0.2s;
+  --transition: all ease 0.3s;
 }
 
 html {
@@ -39,6 +39,7 @@ html {
   outline: none;
   font-family: "JetBrains Mono", monospace;
   text-transform: uppercase;
+  transition: var(--transition);
 }
 
 body {
@@ -57,15 +58,18 @@ body {
   width: 100vw;
   padding: 2em;
 }
-
-.batLogo {
+.logo {
   width: 160px;
+}
+.batLogo {
+  fill: var(--emphasisColor);
+  width: 100%;
   cursor: pointer;
-  filter: brightness(0.7) drop-shadow(0 0 4px transparent);
+  filter: brightness(0.7) drop-shadow(0 0 6px transparent);
   transition: var(--transition);
 }
 .batLogo:hover {
-  filter: brightness(1.1) drop-shadow(0 0 4px var(--emphasisColor));
+  filter: brightness(1.1) drop-shadow(0 0 6px var(--emphasisColor));
 }
 
 .navlinks {
@@ -78,10 +82,8 @@ body {
 .navlinks .linkItem > a {
   text-decoration: none;
   color: var(--emphasisColor);
-  opacity: 0.8;
 }
 .navlinks .linkItem > a:hover {
-  opacity: 1;
   text-shadow: 0px 0px 4px var(--emphasisColor);
 }
 
@@ -107,7 +109,7 @@ body {
   font-size: 3em;
   text-align: center;
   color: var(--textColor);
-  text-shadow: 0px 0px 4px var(--emphasisColor);
+  text-shadow: 0px 0px 8px var(--emphasisColor);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -150,10 +152,10 @@ body {
   border: solid 4px var(--emphasisColor);
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 2px rgba(0, 204, 255, 0.2), 0 0 4px rgba(0, 255, 157, 0.4),
-    0 0 8px rgba(0, 204, 255, 0.8);
+  box-shadow: 0 0 2px var(--emphasisColor), 0 0 4px var(--emphasisColor),
+    0 0 8px var(--emphasisColor);
   position: relative;
-}
+}/*
 .stats .photo::before {
   content: "";
   position: absolute;
@@ -161,11 +163,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 204, 255, 0.4);
+  background: var(--emphasisColor);
   mix-blend-mode: overlay;
   border-radius: 50%;
   z-index: 1;
-}
+  opacity: .5;
+}*/
 
 .stats .photo img {
   width: 100%;
@@ -198,16 +201,27 @@ body {
 
 .stats-indicator .stat-bar .bar-container {
   display: flex;
-  gap: 0.5em;
+  gap: 0.2em;
 }
 
 .stats-indicator .stat-bar .bar-container .square {
   width: 20px;
   height: 20px;
   border: 1px solid var(--emphasisColor);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: charge forwards 1s;
+  transition: var(--transition);
 }
 
 .filled {
   background: var(--emphasisColor);
-  box-shadow: 0 0 12px var(--emphasisColor);
+  box-shadow: 0 0 8px var(--emphasisColor);
+}
+
+@keyframes charge {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
