@@ -1,5 +1,6 @@
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+/* icons */
 
 :root {
   /*colour palette:*/
@@ -43,7 +44,7 @@ html {
 }
 
 body {
-  background-color: var(--backgroundColor);
+  background-color: var(--terminal-blue);
   min-height: 100vh;
   width: 100vw;
   color: var(--textColor);
@@ -134,7 +135,7 @@ body {
     ),
     linear-gradient(90deg, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
-  background-color: var(--terminal-blue);
+  /*background-color: var(--terminal-blue);*/
   color: var(--emphasisColor);
 }
 
@@ -224,4 +225,111 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* timeline */
+
+.timelineContainer{
+  position: relative;
+  width: 100%;
+  padding: 4em;
+  overflow: hidden;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  gap: 1em; 
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  border: solid 1px red;
+  width: max-content;
+  z-index: 1;
+}
+
+/* Línea central */
+ .timeline .centralLine {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+ /* Calcula el ancho completo del contenido */
+ /* width: calc(100% * var(--total-items) - (1em * (var(--total-items) - 1)));*/
+  width: calc(var(--total-items) * 6);
+  height: 4px;
+  background: var(--emphasisColor);
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  min-width: 200px; /* Ancho mínimo por item */
+  flex-shrink: 0; /* Evita que se encojan */
+  scroll-snap-align: start;
+}
+
+/* Punto indicador */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--emphasisColor);
+  box-shadow: 0 0 4px var(--emphasisColor);
+  z-index: 2;
+}
+
+.timeline-date {
+  text-align: center;
+  color: var(--emphasisColor);
+  padding: 8px 0;
+}
+
+.timeline-content {
+  margin-top: 2em;
+  background: none;
+  text-align: center;
+  padding: 2em 1em;
+}
+
+.buttonContainer{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.buttonContainer .skip{
+  background: transparent;
+  border: solid 1px var(--emphasisColor);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 .5em;
+  opacity: .5;
+}
+
+.buttonContainer .skip span{
+  color: var(--emphasisColor);
+  font-weight: 600;
+}
+
+.buttonContainer .prev{
+  transform: skewX(-15deg);
+}
+
+.buttonContainer .next{
+  transform: skewX(15deg);
+}
+
+.skip.pulsed{
+  opacity: 1;
 }

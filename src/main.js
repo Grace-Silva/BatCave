@@ -1,6 +1,6 @@
-// cambiar el color de enfásis:
 document.addEventListener("DOMContentLoaded", changeColor());
 
+// cambiar el color de enfásis:
 function changeColor() {
     const batButton = document.getElementById("batSign");
     // colors:
@@ -34,3 +34,25 @@ function changeColor() {
 
     });
 }
+
+
+// ajustar el ancho de la línea de tiempo:
+const timeline = document.getElementById('timeline');
+const items = document.querySelectorAll('.timeline-item');
+
+// Establece el número total de items como variable CSS
+timeline.style.setProperty('--total-items', items.length);
+
+
+/* avance horizontal */
+const timeLine = document.getElementById("timeline");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+
+prevBtn.addEventListener('click', () => {
+  timeLine.scrollBy({ left: -200, behavior: 'smooth' });
+});
+
+nextBtn.addEventListener('click', () => {
+  timeLine.scrollBy({ left: 200, behavior: 'smooth' });
+});
